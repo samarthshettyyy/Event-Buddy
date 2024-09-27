@@ -1,18 +1,24 @@
 import './App.css';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import Login from './components/Login';
-import Nav from './components/Nav';
+import Nav from './components/Nav'
 import PrivateComponent from './components/PrivateComponent';
 import Signup from './components/Signup';
 import CreateEvent from './components/CreateEvent';
 import MyEvents from './components/MyEvents';
 
+import 'flowbite';
+import './index.css';
+
+
 function App() {
   return (
     <div className="App">
+      
       <BrowserRouter>
         <Nav />
         <Routes>
+          
           <Route element={<PrivateComponent />}>
             <Route path='/' element={<h1>HomePage After Login</h1>}/>
             <Route path='/create-event' element={<CreateEvent />}/>
