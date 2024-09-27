@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import  './CreateEvent.css'
 function CreateEvent() {
     const [name, setName] = useState('');
     const [type, setType] = useState('');
@@ -107,54 +107,126 @@ function CreateEvent() {
     }
 
     return (
-        <div>
-            <h2>Create Event</h2>
-            <form onSubmit={handleCreateEvent}>
-                <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Event Name" required />
-                <input type="text" value={type} onChange={(e) => setType(e.target.value)} placeholder="Event Type" required />
-                <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
-                <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
-                <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location" required />
-                <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description"></textarea>
-
-                {/* Collaborator Input */}
-                <input
-                    type="email"
-                    value={collaboratorEmail}
-                    onChange={(e) => setCollaboratorEmail(e.target.value)}
-                    placeholder="Collaborator Email"
-                />
-                <button type="button" onClick={handleAddCollaborator}>Add Collaborator</button>
-
-                {/* Budget Input */}
-                <input type="number" value={budget} onChange={(e) => setBudget(e.target.value)} placeholder="Budget" />
-
-                {/* Expense Inputs */}
-                <h3>Expenses</h3>
-                {expenses.map((expense, index) => (
-                    <div key={index}>
-                        <input
-                            type="text"
-                            value={expense.category}
-                            onChange={(e) => handleExpenseChange(index, 'category', e.target.value)}
-                            placeholder="Expense Category"
-                            required
-                        />
-                        <input
-                            type="number"
-                            value={expense.amount}
-                            onChange={(e) => handleExpenseChange(index, 'amount', e.target.value)}
-                            placeholder="Amount"
-                            required
-                        />
-                    </div>
-                ))}
-                <button type="button" onClick={handleAddExpense}>Add Another Expense</button>
-
-                <button type="submit">Create Event</button>
-            </form>
-        </div>
-    );
+        <div className="create-event-container">
+        <h2 className="form-heading">Create Event</h2>
+        <form className="event-form" onSubmit={handleCreateEvent}>
+          <div className="form-group">
+            <label>Event Name</label>
+            <input 
+              type="text" 
+              value={name} 
+              onChange={(e) => setName(e.target.value)} 
+              placeholder="Enter event name" 
+              required 
+            />
+          </div>
+      
+          <div className="form-group">
+            <label>Event Type</label>
+            <input 
+              type="text" 
+              value={type} 
+              onChange={(e) => setType(e.target.value)} 
+              placeholder="Enter event type" 
+              required 
+            />
+          </div>
+      
+          <div className="form-group">
+            <label>Date</label>
+            <input 
+              type="date" 
+              value={date} 
+              onChange={(e) => setDate(e.target.value)} 
+              required 
+            />
+          </div>
+      
+          <div className="form-group">
+            <label>Time</label>
+            <input 
+              type="time" 
+              value={time} 
+              onChange={(e) => setTime(e.target.value)} 
+              required 
+            />
+          </div>
+      
+          <div className="form-group">
+            <label>Location</label>
+            <input 
+              type="text" 
+              value={location} 
+              onChange={(e) => setLocation(e.target.value)} 
+              placeholder="Enter location" 
+              required 
+            />
+          </div>
+      
+          <div className="form-group">
+            <label>Description</label>
+            <textarea 
+              value={description} 
+              onChange={(e) => setDescription(e.target.value)} 
+              placeholder="Enter event description" 
+            ></textarea>
+          </div>
+      
+          {/* Collaborator Input */}
+          <div className="form-group">
+            <label>Collaborator Email</label>
+            <input
+              type="email"
+              value={collaboratorEmail}
+              onChange={(e) => setCollaboratorEmail(e.target.value)}
+              placeholder="Enter collaborator email"
+            />
+            <button type="button" onClick={handleAddCollaborator} className="add-btn">
+              Add Collaborator
+            </button>
+          </div>
+      
+          {/* Budget Input */}
+          <div className="form-group">
+            <label>Budget</label>
+            <input 
+              type="number" 
+              value={budget} 
+              onChange={(e) => setBudget(e.target.value)} 
+              placeholder="Enter budget" 
+            />
+          </div>
+      
+          {/* Expense Inputs */}
+          <h3 className="section-heading">Expenses</h3>
+          {expenses.map((expense, index) => (
+            <div key={index} className="expense-group">
+              <input
+                type="text"
+                value={expense.category}
+                onChange={(e) => handleExpenseChange(index, 'category', e.target.value)}
+                placeholder="Expense Category"
+                required
+              />
+              <input
+                type="number"
+                value={expense.amount}
+                onChange={(e) => handleExpenseChange(index, 'amount', e.target.value)}
+                placeholder="Amount"
+                required
+              />
+            </div>
+          ))}
+          <button type="button" onClick={handleAddExpense} className="add-btn">
+            Add Another Expense
+          </button>
+      
+          <button type="submit" className="submit-btn">Create Event</button>
+        </form>
+      </div>
+      
+          );
+    
 }
 
 export default CreateEvent;
