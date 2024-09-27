@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function MyEvents() {
   const [events, setEvents] = useState([]);
@@ -43,22 +43,29 @@ function MyEvents() {
 
   return (
     <div>
-      <h2>My Events</h2>
+      <h1>My Events</h1>
       {events.length === 0 ? (
         <p>No events found.</p>
       ) : (
-        <ul>
-          {events.map((item) => (
-            <li key={item._id}>
-              <h3>{item.name}</h3>
-              <p>Type: {item.type}</p>
-              <p>Date: {new Date(item.date).toLocaleDateString()}</p>
-              <p>Time: {item.time}</p>
-              <p>Location: {item.location}</p>
-              <p>Description: {item.description}</p>
-            </li>
-          ))}
-        </ul>
+        <div className='myevents'>
+          <ul>
+            {events.map((item) => (
+              <li key={item._id} className='myevent'>
+                <h3>{item.name}</h3>
+                <p>Type: {item.type}</p>
+                <p>Date: {new Date(item.date).toLocaleDateString()}</p>
+                <p>Time: {item.time}</p>
+                <p>Location: {item.location}</p>
+                <p>Description: {item.description}</p>
+                <Link to={"/budget-tracking/" + item._id}>
+                  <button className="btn">
+                    $
+                  </button>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );
