@@ -58,8 +58,13 @@ const Nav = () => {
                 </Navbar.Link>
             </li>
             <li>
-                <Navbar.Link href="/create">
+                <Navbar.Link href="/create-event">
                     Create
+                </Navbar.Link>
+            </li>
+            <li>
+                <Navbar.Link href="/my-events/:id">
+                    My Events
                 </Navbar.Link>
             </li>
             <li>

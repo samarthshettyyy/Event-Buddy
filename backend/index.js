@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 require('./db/config');
 const User = require('./db/User'); 
+const Event = require('./db/Event');
 
 const app = express();
 app.use(express.json());
@@ -25,6 +26,21 @@ app.post("/login", async (req, res) => {
         }
     } else {
         res.send({ result: 'No User Found'});
+    }
+})
+
+app.post("/create-event", async (req, res) => {
+    let event = new Event(req.body);
+    let result = await event.save();
+    res.send(result);
+})
+
+app.get("/my-events/:id", async (req, res) => {
+    let result = await Event.find({createdBy: req.params.id});
+    if(result) {
+        res.send(result);
+    } else {
+        res.send({result:"No result found"});
     }
 })
 
