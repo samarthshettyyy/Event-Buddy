@@ -58,10 +58,16 @@ const Nav = () => {
                 </Navbar.Link>
             </li>
             <li>
+                <Navbar.Link href="/home">
+                    Home
+                </Navbar.Link>
+            </li>
+            <li>
                 <Navbar.Link href="/create-event">
                     Create
                 </Navbar.Link>
             </li>
+            
             <li>
                 <Navbar.Link href="/my-events/:id">
                     My Events
@@ -82,10 +88,10 @@ const Nav = () => {
     ) : (
         <ul className="nav-ul flex space-x-4">
             <li>
-                <Link to="/signup">Signup</Link>
+                <Link to="/signup"></Link>
             </li>
             <li>
-                <Link to="/login">Login</Link>
+                <Link to="/login"></Link>
             </li>
         </ul>
     )}

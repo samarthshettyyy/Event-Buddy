@@ -1,0 +1,49 @@
+/* Set background image and center the login card */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://your-image-url.com/background.jpg'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+}
+
+.login-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency */
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 500px; /* Increase width */
+    height: 400px; /* Increase height */
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.inputBox {
+    width: 100%;
+    padding: 12px; /* Slightly increase padding */
+    margin-bottom: 20px; /* Increase spacing */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px; /* Slightly increase padding */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background-color: #45a049;
+}

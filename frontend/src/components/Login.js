@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./Login.css"
+
 
 const Login = () => {
 
@@ -36,14 +38,26 @@ const Login = () => {
     } 
 
     return (
-        <div>
-            <div className='login-div'>
+        <div className="login-container">
+            <div className="login-card">
                 <h1>Login</h1>
-                <input type="text" className="inputBox" onChange={(e)=>setEmail(e.target.value)} value={email} placeholder="Enter your email"></input>
-                <input type="password" className="inputBox" onChange={(e)=>setPassword(e.target.value)} value={password} placeholder="Enter your password"></input>
-                <button onClick={handleLogin} className="signup-btn" type="button">Login</button>
+                <input 
+                    type="text" 
+                    className="inputBox" 
+                    onChange={(e) => setEmail(e.target.value)} 
+                    value={email} 
+                    placeholder="Enter your email" 
+                />
+                <input 
+                    type="password" 
+                    className="inputBox" 
+                    onChange={(e) => setPassword(e.target.value)} 
+                    value={password} 
+                    placeholder="Enter your password" 
+                />
+                <button onClick={handleLogin} className="login-btn" type="button">Login</button>
             </div>
-        </div>
+        </div>
     )
 }
 
