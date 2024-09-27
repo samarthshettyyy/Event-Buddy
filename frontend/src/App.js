@@ -11,6 +11,7 @@ import Chatbot from './components/Chatbot'; // Import the chatbot
 
 import 'flowbite';
 import './index.css';
+import BudgetTracking from './components/BudgetTracking';
 
 function App() {
   return (
@@ -21,28 +22,29 @@ function App() {
           <Route element={<PrivateComponent />}>
             {/* HomePage After Login with FlowCarousel and Chatbot */}
             <Route
-  path="/"
-  element={
-    <div>
-      <h1 className="text-center text-2xl my-4"></h1>
-      {/* Flexbox container for aligning carousel and chatbot */}
-      <div className="flex items-center justify-between">
-        {/* Carousel container */}
-        <div className="w-1/2 h-85 overflow-hidden"> 
-          <FlowCarousel />
-        </div>
-        {/* Chatbot container */}
-        <div className="container mx-auto p-4 ">
-      <h1 className="text-2xl font-bold mb-4">Event Planning Assistant</h1>
-      <Chatbot />
-    </div>
-      </div>
-    </div>
-  }
-/>
+              path="/"
+              element={
+                <div>
+                  <h1 className="text-center text-2xl my-4"></h1>
+                  {/* Flexbox container for aligning carousel and chatbot */}
+                  <div className="flex items-center justify-between">
+                    {/* Carousel container */}
+                    <div className="w-1/2 h-85 overflow-hidden">
+                      <FlowCarousel />
+                    </div>
+                    {/* Chatbot container */}
+                    <div className="container mx-auto p-4 ">
+                      <h1 className="text-2xl font-bold mb-4">Event Planning Assistant</h1>
+                      <Chatbot />
+                    </div>
+                  </div>
+                </div>
+              }
+            />
 
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
+            <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
