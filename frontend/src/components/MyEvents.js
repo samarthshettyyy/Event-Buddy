@@ -68,7 +68,7 @@ function MyEvents() {
                     Edit
                   </button>
                 </Link>
-                <Link to={"/task/" + item._id}>
+                <Link to={"/tasks/" + item._id}>
                   <button className="btn">
                     Task
                   </button>

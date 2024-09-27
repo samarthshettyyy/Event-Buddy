@@ -49,42 +49,6 @@ app.get("/my-events/:id", async (req, res) => {
     }
 });
 
-// Update task status
-// app.patch("/update-task/:taskId", async (req, res) => {
-//     let result = await Task.findByIdAndUpdate(req.params.taskId, { status: req.body.status }, { new: true });
-//     if(result) {
-//         res.send(result);
-//     } else {
-//         res.send({ result: "Task not found" });
-//     }
-// });
-
-app.post("/add-task/:id", async (req, res) => {
-    let task = new Task.find({eventId: req.params.id});
-    let result = await task.save();
-    res.send(result);
-});
-
-// Delete task by ID
-app.delete("/delete-task/:taskId", async (req, res) => {
-    let result = await Task.findByIdAndDelete(req.params.taskId);
-    if(result) {
-        res.send({ result: "Task deleted" });
-    } else {
-        res.send({ result: "Task not found" });
-    }
-});
-
-
-app.get("/tasks/:id", async (req, res) => {
-    let result = await Task.findById({ _id: req.params.id });
-    if (result) {
-        res.send(result);
-    } else {
-        res.send({ result: "No result found" });
-    }
-})
-
 app.get("/my-event/:id", async (req, res) => {
     let result = await Event.findById({ _id: req.params.id });
     if (result) {
@@ -103,6 +67,47 @@ app.put("/my-event/:id", async (req, res) => {
     )
     res.send(result);
 })
+
+app.get('/tasks/:eventId', async (req, res) => {
+    try {
+        const tasks = await Task.find({ eventId: req.params.eventId });
+        res.send(tasks);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching tasks' });
+    }
+});
+
+app.post('/tasks', async (req, res) => {
+    const { title, assignee, dueDate, eventId } = req.body;
+    try {
+        const task = new Task({ title, assignee, dueDate, eventId });
+        await task.save();
+        res.json(task);
+    } catch (error) {
+        res.status(500).json({ message: 'Error creating task' });
+    }
+});
+
+app.patch('/tasks/:id', async (req, res) => {
+    try {
+        const task = await Task.findByIdAndUpdate(req.params.id, { status: req.body.status }, { new: true });
+        res.json(task);
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating task' });
+    }
+});
+
+app.delete("/tasks/:id", async (req, res) => {
+    const result = await Task.deleteOne({_id:req.params.id});
+    res.send(result);
+});
+
+app.get("/search-email/:key", async (req, res) => {
+    let result = await User.find({
+        email: { $regex: req.params.key, $options: 'i' } // case-insensitive regex search
+    });
+    res.send(result);
+});
 
 console.log("Working");
 app.listen(5000);

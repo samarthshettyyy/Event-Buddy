@@ -48,7 +48,7 @@ function App() {
             <Route path="/my-events/:id" element={<MyEvents />} />
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
             <Route path="/update/:id" element={<EditEvent />} />
-            <Route path="/task/:id" element={<TaskList />} />
+            <Route path="/tasks/:id" element={<TaskList />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

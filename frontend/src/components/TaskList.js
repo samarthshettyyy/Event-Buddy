@@ -2,15 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { PlusIcon, TrashIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
 
-// Mock team members
-const teamMembers = [
-  { id: '1', name: 'Alice Johnson' },
-  { id: '2', name: 'Bob Smith' },
-  { id: '3', name: 'Charlie Brown' },
-];
-
-const TaskList = ({ eventId }) => {  // Pass eventId as a prop
-  const [tasks, setTasks] = useState([]);
+const TaskList = () => {
+  const [tasks, setTasks] = useState([]); // Ensure tasks is an array
   const [newTask, setNewTask] = useState({
     title: '',
     assignee: '',
@@ -19,15 +12,43 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const params = useParams();
+  const { id } = useParams(); // Event ID from params
+  const [searchResults, setSearchResults] = useState([]);
+  const [selectedEmail, setSelectedEmail] = useState('');
+
+  const searchHandle = async (event) => {
+    let key = event.target.value;
+    if (key) {
+      let result = await fetch(`http://localhost:5000/search-email/${key}`);
+      result = await result.json();
+      if (result) {
+        setSearchResults(result); // Store search results
+      }
+    } else {
+      setSearchResults([]); // Clear results if no input
+    }
+  };
+
+  // Handle selection of email
+  const handleSelectEmail = (email) => {
+    setSelectedEmail(email); // Set selected email
+    setSearchResults([]); // Clear search results after selection
+    setNewTask((prev) => ({ ...prev, assignee: email })); // Assign email to newTask assignee
+  };
 
   // Fetch tasks from backend
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/tasks/${params.id}`);
+        const response = await fetch(`http://localhost:5000/tasks/${id}`);
         const data = await response.json();
-        setTasks(data);
+        console.log(data); // Ensure data is correct
+
+        if (Array.isArray(data)) {
+          setTasks(data); // Set the tasks data
+        } else {
+          setTasks([]); // Default to empty array if something is wrong
+        }
       } catch (error) {
         setError('Failed to fetch tasks');
       } finally {
@@ -36,7 +57,7 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
     };
 
     fetchTasks();
-  }, [params.id]);
+  }, [id]);
 
   // Handle input change for new task
   const handleInputChange = (e) => {
@@ -53,20 +74,18 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
     }
 
     try {
-        console.warn(newTask);
-      const response = await fetch('http://localhost:5000/create-task', {
+      const response = await fetch('http://localhost:5000/tasks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...newTask,
-          eventId, // Include eventId in the task creation
+          eventId: id, // Pass the eventId in the task creation
         }),
       });
-      
       const data = await response.json();
-      setTasks((prev) => [...prev, data]); // Add new task to the state
+      setTasks((prev) => [...prev, data]); // Add the new task to the list
       setNewTask({ title: '', assignee: '', dueDate: '', status: 'todo' });
       setError(null);
     } catch (error) {
@@ -77,7 +96,7 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
   // Delete task
   const handleDeleteTask = async (taskId) => {
     try {
-      await fetch(`http://localhost:5000/delete-task/${taskId}`, {
+      await fetch(`http://localhost:5000/tasks/${taskId}`, {
         method: 'DELETE',
       });
       setTasks((prev) => prev.filter((task) => task._id !== taskId));
@@ -89,7 +108,7 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
   // Update task status
   const handleStatusChange = async (taskId, newStatus) => {
     try {
-      const response = await fetch(`http://localhost:5000/update-task/${taskId}`, {
+      const response = await fetch(`http://localhost:5000/tasks/${taskId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -108,7 +127,7 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
   };
 
   if (isLoading) {
-    return <div className="text-center py-4">Loading tasks...</div>;
+    return <div>Loading tasks...</div>;
   }
 
   return (
@@ -137,21 +156,25 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
           />
         </div>
         <div className="mb-4">
-          <label htmlFor="assignee" className="block text-gray-700 text-sm font-bold mb-2">
-            Assignee
-          </label>
-          <select
-            id="assignee"
-            name="assignee"
-            value={newTask.assignee}
-            onChange={handleInputChange}
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          >
-            <option value="">Select an assignee</option>
-            {teamMembers.map((member) => (
-              <option key={member.id} value={member.id}>{member.name}</option>
-            ))}
-          </select>
+          <div>
+            <label>Assign to:</label>
+            <input
+              type="text"
+              onChange={searchHandle}
+              placeholder="Search by email..."
+              value={selectedEmail}
+            />
+            {/* Render search results */}
+            {searchResults.length > 0 && (
+              <ul>
+                {searchResults.map((user) => (
+                  <li key={user._id} onClick={() => handleSelectEmail(user.email)}>
+                    {user.email}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
         </div>
         <div className="mb-4">
           <label htmlFor="dueDate" className="block text-gray-700 text-sm font-bold mb-2">
@@ -184,31 +207,30 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
         ) : (
           <ul className="divide-y divide-gray-200">
             {tasks.map((task) => (
-              <li key={task.id} className="py-4">
+              <li key={task._id} className="py-4">
                 <div className="flex items-center justify-between">
                   <div>
                     <h4 className="text-lg font-medium">{task.title}</h4>
                     <p className="text-sm text-gray-500">
-                      Assigned to: {teamMembers.find((m) => m.id === task.assignee)?.name}
+                      Assigned to: {task.assignee}
                     </p>
                     <p className="text-sm text-gray-500">Due: {task.dueDate}</p>
                   </div>
                   <div className="flex items-center">
                     <select
                       value={task.status}
-                      onChange={(e) => handleStatusChange(task.id, e.target.value)}
+                      onChange={(e) => handleStatusChange(task._id, e.target.value)}
                       className="mr-2 shadow border rounded py-1 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     >
                       <option value="todo">To Do</option>
                       <option value="in-progress">In Progress</option>
-                      <option value="completed">Completed</option>
+                      <option value="pending">Pending</option>
                     </select>
                     <button
-                      onClick={() => handleDeleteTask(task.id)}
-                      className="text-red-500 hover:text-red-700 focus:outline-none"
-                      aria-label="Delete task"
+                      onClick={() => handleDeleteTask(task._id)}
+                      className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline"
                     >
-                      <TrashIcon className="w-5 h-5" />
+                      <TrashIcon className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
@@ -219,6 +241,6 @@ const TaskList = ({ eventId }) => {  // Pass eventId as a prop
       </div>
     </div>
   );
-}
+};
 
 export default TaskList;

@@ -22,7 +22,6 @@ const taskSchema = new mongoose.Schema({
         ref: 'Event',
         required: true
     }
-    // Remove or update the email field if not needed
 });
 
 module.exports = mongoose.model('Task', taskSchema);
