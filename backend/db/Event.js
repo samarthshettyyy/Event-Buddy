@@ -52,6 +52,17 @@ const eventSchema = new mongoose.Schema({
       required: true
     }
   }],
+  expensesDone: [{
+    category: {
+      type: String,
+      required: true,
+    },
+    amount: {
+      type: Number,
+      required: true,
+      default: 0
+    }
+  }],
   status: {
     type: String,
     enum: ['Planned', 'In Progress', 'Completed', 'Cancelled'],

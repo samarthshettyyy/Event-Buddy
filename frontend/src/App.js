@@ -11,7 +11,11 @@ import Chatbot from './components/Chatbot'; // Import the chatbot
 
 import 'flowbite';
 import './index.css';
+<<<<<<< HEAD
 import TaskList from './components/TaskList';
+=======
+import BudgetTracking from './components/BudgetTracking';
+>>>>>>> c0f1d8ea48d2202192b57e5283226d478834ef95
 
 function App() {
   return (
@@ -24,28 +28,29 @@ function App() {
             <Route
   path="/"
   element={
-    <div>
-      <h1 className="text-center text-2xl my-4"></h1>
-      {/* Flexbox container for aligning carousel and chatbot */}
-      <div className="flex items-center justify-between">
-        {/* Carousel container */}
-        <div className="w-1/2 h-85 overflow-hidden"> 
-          <FlowCarousel />
-        </div>
-        {/* Chatbot container */}
-        <div className="container mx-auto p-4 ">
-      <h1 className="text-2xl font-bold mb-4">Event Planning Assistant</h1>
-      <Chatbot />
-    </div>
-      </div>
-    </div>
+    <div class="Pflow">
+ 
+  <div class="Flow">
+    <FlowCarousel />
+  </div>
+
+ 
+  <div class="Flow">
+    <h1 class="Text">Event Planning Assistant</h1>
+    <Chatbot />
+  </div>
+</div>
   }
 />
 
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
+<<<<<<< HEAD
             <Route path="/task-assignment" element={<TaskList />} />
             
+=======
+            <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
+>>>>>>> c0f1d8ea48d2202192b57e5283226d478834ef95
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

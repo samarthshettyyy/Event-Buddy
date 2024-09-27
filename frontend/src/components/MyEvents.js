@@ -1,7 +1,10 @@
 import { Button } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
+<<<<<<< HEAD
 import TaskAssignment from './TaskList';
+=======
+>>>>>>> c0f1d8ea48d2202192b57e5283226d478834ef95
 
 function MyEvents() {
   const [events, setEvents] = useState([]);
@@ -45,10 +48,11 @@ function MyEvents() {
 
   return (
     <div>
-      <h2>My Events</h2>
+      <h1>My Events</h1>
       {events.length === 0 ? (
         <p>No events found.</p>
       ) : (
+<<<<<<< HEAD
         <ul>
           {events.map((item) => (
             <li key={item._id}>
@@ -66,6 +70,27 @@ function MyEvents() {
             </li>
           ))}
         </ul>
+=======
+        <div className='myevents'>
+          <ul>
+            {events.map((item) => (
+              <li key={item._id} className='myevent'>
+                <h3>{item.name}</h3>
+                <p>Type: {item.type}</p>
+                <p>Date: {new Date(item.date).toLocaleDateString()}</p>
+                <p>Time: {item.time}</p>
+                <p>Location: {item.location}</p>
+                <p>Description: {item.description}</p>
+                <Link to={"/budget-tracking/" + item._id}>
+                  <button className="btn">
+                    $
+                  </button>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+>>>>>>> c0f1d8ea48d2202192b57e5283226d478834ef95
       )}
     </div>
   );
