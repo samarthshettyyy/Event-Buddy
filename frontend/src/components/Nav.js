@@ -77,12 +77,7 @@ const Nav = () => {
                     Chat
                 </Navbar.Link>
             </li>
-            <li className="translateX"> {/* Flex container for Avatar and Logout */}
-                
-                <Navbar.Link href="/signup" onClick={logout}>
-                    Logout: {JSON.parse(auth).name} {/* Display user's name beside the avatar */}
-                </Navbar.Link>
-            </li>
+            
         </ul>
     ) : (
         <ul className="nav-ul flex space-x-4">

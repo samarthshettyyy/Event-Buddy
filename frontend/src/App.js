@@ -4,11 +4,11 @@ import Login from './components/Login';
 import Nav from './components/Nav'
 import PrivateComponent from './components/PrivateComponent';
 import Signup from './components/Signup';
-import CreateEvent from './components/CreateEvent';
-import MyEvents from './components/MyEvents';
+import FlowCarousel from './components/FlowCarousel';
 
 import 'flowbite';
 import './index.css';
+
 
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
           <Route path='/signup' element={<Signup />}/>
           <Route path='/login' element={<Login />}/>
         </Routes>
+        <FlowCarousel/>
       </BrowserRouter>
     </div>
   );
