@@ -11,6 +11,7 @@ import Chatbot from './components/Chatbot'; // Import the chatbot
 
 import 'flowbite';
 import './index.css';
+import TaskList from './components/TaskList';
 
 function App() {
   return (
@@ -43,6 +44,8 @@ function App() {
 
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
+            <Route path="/task-assignment" element={<TaskList />} />
+            
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

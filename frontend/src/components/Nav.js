@@ -37,8 +37,8 @@ const Nav = () => {
                     }
                 >
                     <Dropdown.Header>
-                        <span className="block text-sm">Samarth Shetty</span>
-                        <span className="block truncate text-sm font-medium">samarthshetty04@gmail.com</span>
+                        <span className="block text-sm">{ JSON.parse(auth).name}</span>
+                        <span className="block truncate text-sm font-medium">({ JSON.parse(auth).email})</span>
                     </Dropdown.Header>
                     <Dropdown.Item>Dashboard</Dropdown.Item>
                     <Dropdown.Item>Settings</Dropdown.Item>
@@ -58,7 +58,7 @@ const Nav = () => {
                 </Navbar.Link>
             </li>
             <li>
-                <Navbar.Link href="/home">
+                <Navbar.Link href="/">
                     Home
                 </Navbar.Link>
             </li>

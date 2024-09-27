@@ -1,5 +1,7 @@
+import { Button } from 'flowbite-react';
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import TaskAssignment from './TaskList';
 
 function MyEvents() {
   const [events, setEvents] = useState([]);
@@ -56,6 +58,11 @@ function MyEvents() {
               <p>Time: {item.time}</p>
               <p>Location: {item.location}</p>
               <p>Description: {item.description}</p>
+              <Link to={"/task-assignment"}>
+               <button> Tasks </button> 
+               </Link>
+             
+
             </li>
           ))}
         </ul>
