@@ -62,6 +62,11 @@ function MyEvents() {
                     $
                   </button>
                 </Link>
+                <Link to={"/update/" + item._id}>
+                  <button className="btn">
+                    Edit
+                  </button>
+                </Link>
               </li>
             ))}
           </ul>

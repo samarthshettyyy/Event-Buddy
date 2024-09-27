@@ -12,6 +12,7 @@ import Chatbot from './components/Chatbot'; // Import the chatbot
 import 'flowbite';
 import './index.css';
 import BudgetTracking from './components/BudgetTracking';
+import EditEvent from './components/EditEvent';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
+            <Route path="/update/:id" element={<EditEvent />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
