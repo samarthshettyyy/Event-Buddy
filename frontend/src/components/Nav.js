@@ -51,7 +51,7 @@ const Nav = () => {
 
             <Navbar.Collapse>
     {auth ? (
-        <ul className="nav-ul flex items-center space-x-4"> {/* Adjust layout here */}
+        <ul className="nav-ul flex items-center space-x-8"> {/* Adjust layout here */}
             <li>
                 <Navbar.Link href="/" active>
                     Home

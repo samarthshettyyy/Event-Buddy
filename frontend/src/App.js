@@ -20,7 +20,7 @@ function App() {
         <Routes>
           
           <Route element={<PrivateComponent />}>
-            <Route path='/' element={<h1>HomePage After Login</h1>}/>
+            <Route path='/' element={<h1></h1>}/>
           </Route>
           <Route path='/signup' element={<Signup />}/>
           <Route path='/login' element={<Login />}/>
