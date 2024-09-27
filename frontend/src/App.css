@@ -48,6 +48,20 @@ h1 {
   background-color: turquoise;
 }
 
+.myevents {
+  margin: auto;
+  width: 70%;
+}
+
+.myevent {
+  padding: 25px;
+  margin-top: 25px;
+  border-radius: 25px;
+  -webkit-box-shadow: -6px 10px 20px -4px rgba(0,0,0,0.75);
+  -moz-box-shadow: -6px 10px 20px -4px rgba(0,0,0,0.75);
+  box-shadow: -6px 10px 20px -4px rgba(0,0,0,0.75);
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

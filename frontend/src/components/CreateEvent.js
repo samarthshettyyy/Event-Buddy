@@ -12,6 +12,7 @@ function CreateEvent() {
     const [collaboratorEmail, setCollaboratorEmail] = useState('');
     const [budget, setBudget] = useState(0);
     const [expenses, setExpenses] = useState([{ category: '', amount: '' }]);
+    const [expensesDone, setExpensesDone] = useState([{ category: '', amount: 0 }]);
     const navigate = useNavigate();
 
     const handleAddCollaborator = () => {
@@ -23,10 +24,19 @@ function CreateEvent() {
         const updatedExpenses = [...expenses];
         updatedExpenses[index][key] = value;
         setExpenses(updatedExpenses);
+
+        const updatedExpensesDone = [...expensesDone];
+        if (key === 'category') {
+            updatedExpensesDone[index].category = value; // Keep categories in sync
+        } else if (key === 'amount') {
+            updatedExpensesDone[index].amount = 0; // Update amount if necessary
+        }
+        setExpensesDone(updatedExpensesDone);
     };
 
     const handleAddExpense = () => {
         setExpenses([...expenses, { category: '', amount: '' }]);
+        setExpensesDone([...expensesDone, { category: '', amount: 0 }]);
     };
 
     /*const handleCreateEvent = async (e) => {
@@ -79,6 +89,7 @@ function CreateEvent() {
             collaborators,
             budget,
             expenses, 
+            expensesDone,
             createdBy
         };
 
