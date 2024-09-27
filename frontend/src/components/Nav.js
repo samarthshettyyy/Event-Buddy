@@ -24,78 +24,86 @@ const Nav = () => {
                     Event Buddy
                 </span>
             </Navbar.Brand>
-            <div className="flex md:order-2">
-                <Dropdown
-                    arrowIcon={false}
-                    inline={true}
-                    label={
-                        <Avatar
-                            alt="User settings"
-                            img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-                            rounded={true}
-                        />
-                    }
-                >
-                    <Dropdown.Header>
-                        <span className="block text-sm">{ JSON.parse(auth).name}</span>
-                        <span className="block truncate text-sm font-medium">({ JSON.parse(auth).email})</span>
-                    </Dropdown.Header>
-                    <Dropdown.Item>Dashboard</Dropdown.Item>
-                    <Dropdown.Item>Settings</Dropdown.Item>
-                    <Dropdown.Item>Earnings</Dropdown.Item>
-                    <Dropdown.Divider />
-                    <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
-                </Dropdown>
-                <Navbar.Toggle />
-            </div>
+            {
+                auth ? (
+
+                    <div className="flex md:order-2">
+                        <Dropdown
+                            arrowIcon={false}
+                            inline={true}
+                            label={
+                                <Avatar
+                                    alt="User settings"
+                                    img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                                    rounded={true}
+                                />
+                            }
+                        >
+                            <Dropdown.Header>
+                                <span className="block text-sm">{JSON.parse(auth).name}</span>
+                                <span className="block truncate text-sm font-medium">{JSON.parse(auth).email}</span>
+                            </Dropdown.Header>
+                            <Dropdown.Item>Dashboard</Dropdown.Item>
+                            <Dropdown.Item>Settings</Dropdown.Item>
+                            <Dropdown.Item>Earnings</Dropdown.Item>
+                            <Dropdown.Divider />
+                            <Dropdown.Item onClick={logout}>Sign out</Dropdown.Item>
+                        </Dropdown>
+                        <Navbar.Toggle />
+                    </div>
+                )
+                    : (
+                        <></>
+                    )
+            }
 
             <Navbar.Collapse>
-    {auth ? (
-        <ul className="nav-ul flex items-center space-x-8"> {/* Adjust layout here */}
-            <li>
-                <Navbar.Link href="/" active>
-                    Home
-                </Navbar.Link>
-            </li>
-            <li>
-                <Navbar.Link href="/">
-                    Home
-                </Navbar.Link>
-            </li>
-            <li>
-                <Navbar.Link href="/create-event">
-                    Create
-                </Navbar.Link>
-            </li>
-            
-            <li>
-                <Navbar.Link href="/my-events/:id">
-                    My Events
-                </Navbar.Link>
-            </li>
-            <li>
-                <Navbar.Link href="/list">
-                    List of Events
-                </Navbar.Link>
-            </li>
-            <li>
-                <Navbar.Link href="/chat">
-                    Chat
-                </Navbar.Link>
-            </li>
-            
-        </ul>
-    ) : (
-        <ul className="nav-ul flex space-x-4">
-            <li>
-                <Link to="/signup"></Link>
-            </li>
-            <li>
-                <Link to="/login"></Link>
-            </li>
-        </ul>
-    )}
-</Navbar.Collapse>
+                {auth ? (
+                    <ul className="nav-ul flex items-center space-x-8"> {/* Adjust layout here */}
+                        <li>
+                            <Navbar.Link href="/" active>
+                                Home
+                            </Navbar.Link>
+                        </li>
+                        <li>
+                            <Navbar.Link href="/home">
+                                Home
+                            </Navbar.Link>
+                        </li>
+                        <li>
+                            <Navbar.Link href="/create-event">
+                                Create
+                            </Navbar.Link>
+                        </li>
+
+                        <li>
+                            <Navbar.Link href="/my-events/:id">
+                                My Events
+                            </Navbar.Link>
+                        </li>
+                        <li>
+                            <Navbar.Link href="/list">
+                                List of Events
+                            </Navbar.Link>
+                        </li>
+                        <li>
+                            <Navbar.Link href="/chat">
+                                Chat
+                            </Navbar.Link>
+                        </li>
+
+                    </ul>
+                ) : (
+                    <ul className="nav-ul flex space-x-4">
+                        <li>
+                            <Link to="/signup"></Link>
+                        </li>
+                        <li>
+                            <Link to="/login"></Link>
+                        </li>
+                    </ul>
+                )}
+            </Navbar.Collapse>
 
 
         </Navbar>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { PlusIcon, TrashIcon } from 'lucide-react';
+import { useParams } from 'react-router-dom';
 
 // Mock team members
 const teamMembers = [
@@ -8,7 +9,7 @@ const teamMembers = [
   { id: '3', name: 'Charlie Brown' },
 ];
 
-export default function TaskAssignment({ eventId }) {  // Pass eventId as a prop
+const TaskList = ({ eventId }) => {  // Pass eventId as a prop
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState({
     title: '',
@@ -18,12 +19,13 @@ export default function TaskAssignment({ eventId }) {  // Pass eventId as a prop
   });
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const params = useParams();
 
   // Fetch tasks from backend
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/tasks/${eventId}`);
+        const response = await fetch(`http://localhost:5000/tasks/${params.id}`);
         const data = await response.json();
         setTasks(data);
       } catch (error) {
@@ -34,7 +36,7 @@ export default function TaskAssignment({ eventId }) {  // Pass eventId as a prop
     };
 
     fetchTasks();
-  }, [eventId]);
+  }, [params.id]);
 
   // Handle input change for new task
   const handleInputChange = (e) => {
@@ -218,3 +220,5 @@ export default function TaskAssignment({ eventId }) {  // Pass eventId as a prop
     </div>
   );
 }
+
+export default TaskList;

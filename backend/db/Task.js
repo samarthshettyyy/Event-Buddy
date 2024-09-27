@@ -18,7 +18,8 @@ const taskSchema = new mongoose.Schema({
         default: 'todo'
     },
     eventId: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event',
         required: true
     }
     // Remove or update the email field if not needed

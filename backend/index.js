@@ -50,13 +50,19 @@ app.get("/my-events/:id", async (req, res) => {
 });
 
 // Update task status
-app.patch("/update-task/:taskId", async (req, res) => {
-    let result = await Task.findByIdAndUpdate(req.params.taskId, { status: req.body.status }, { new: true });
-    if(result) {
-        res.send(result);
-    } else {
-        res.send({ result: "Task not found" });
-    }
+// app.patch("/update-task/:taskId", async (req, res) => {
+//     let result = await Task.findByIdAndUpdate(req.params.taskId, { status: req.body.status }, { new: true });
+//     if(result) {
+//         res.send(result);
+//     } else {
+//         res.send({ result: "Task not found" });
+//     }
+// });
+
+app.post("/add-task/:id", async (req, res) => {
+    let task = new Task.find({eventId: req.params.id});
+    let result = await task.save();
+    res.send(result);
 });
 
 // Delete task by ID
@@ -68,6 +74,16 @@ app.delete("/delete-task/:taskId", async (req, res) => {
         res.send({ result: "Task not found" });
     }
 });
+
+
+app.get("/tasks/:id", async (req, res) => {
+    let result = await Task.findById({ _id: req.params.id });
+    if (result) {
+        res.send(result);
+    } else {
+        res.send({ result: "No result found" });
+    }
+})
 
 app.get("/my-event/:id", async (req, res) => {
     let result = await Event.findById({ _id: req.params.id });
