@@ -30,9 +30,9 @@ const Nav=() => {
                         <img src='' className='profile-pic' alt='profile-pic'></img>
                     </div>
                     <div>
-                        <li><Link to="/">Products</Link></li>
-                        <li><Link to="/add">Add Product</Link></li>
-                        <li><Link to="/profile/:id">Profile</Link></li> 
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/create-event">Create Event</Link></li>
+                        <li><Link to="/my-events/:id">My Events</Link></li> 
                         <li><Link onClick={logout} to="/signup">Logout:- {JSON.parse(auth).name}</Link></li>
                     </div>
                 </div>
