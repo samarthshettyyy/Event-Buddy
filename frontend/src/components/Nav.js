@@ -92,10 +92,11 @@ const Nav = () => {
                             </Navbar.Link>
                         </li>
                         <li>
-                            <Navbar.Link href="/chat">
-                                Chat
+                            <Navbar.Link href="/VendorPage">
+                                Vendors
                             </Navbar.Link>
                         </li>
+                      
 
                     </ul>
                 ) : (

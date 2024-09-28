@@ -6,6 +6,7 @@ const Event = require('./db/Event');
 const Task = require('./db/Task'); // Import the Task model
 const Media = require('./db/Media');
 const multer = require('multer');
+const Vendor=require('./db/Vendor');
 const path = require('path');
 
 const app = express();
@@ -176,6 +177,35 @@ app.get("/media-events", async (req, res) => {
         res.send({result: "No products found"});
     }
 })
+
+
+app.get('/api/vendors', async (req, res) => {
+    try {
+      const vendors = await vendors.find();
+      res.json(vendors);
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+  
+  // Rate a vendor
+  app.post('/VendorPage', async (req, res) => {
+    const { rating } = req.body;
+    try {
+      const vendor = await vendor.findById(req.params.id);
+      if (!vendor) {
+        return res.status(404).json({ message: 'Vendor not found' });
+      }
+  
+      vendor.ratings.push(rating);
+      await vendor.save();
+      res.json({ message: 'Rating added successfully' });
+    } catch (err) {
+      res.status(500).json({ message: err.message });
+    }
+  });
+  
+
 
 console.log("Working");
 app.listen(5000);

@@ -5,6 +5,8 @@ import { Carousel } from "flowbite-react";
 import image1 from '../assets/image1.jpg'
 import image2 from '../assets/image2.webp'
 import image3 from '../assets/image3.jpg'
+import image4 from '../assets/Event.jpg'
+import image5 from '../assets/Event1.jpeg'
 
 const FlowCarousel=()=> {
   return (
@@ -15,8 +17,8 @@ const FlowCarousel=()=> {
         <img src={image1} alt="..." />
         <img src={image2} alt="..." />
         <img src={image3} alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-4.svg" alt="..." />
-        <img src="https://flowbite.com/docs/images/carousel/carousel-5.svg" alt="..." />
+        <img src={image4} alt="..." />
+        <img src={image5} alt="..." />
       </Carousel>
     </div>
   );

@@ -15,7 +15,7 @@ const predefinedQuestions = [
   },
   {
     id: 'q3',
-    question: 'How do I manage the guest list?',
+    question: 'How?',
     answer: 'To manage your guest list, go to the "Guests" tab in your event dashboard. Here you can add new guests, import contacts, send invitations, and track RSVPs. You can also create custom guest categories for easy organization.'
   },
   {

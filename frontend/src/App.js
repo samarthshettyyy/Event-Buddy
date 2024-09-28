@@ -21,7 +21,10 @@ import EditEvent from "./components/EditEvent";
 import TaskList from "./components/TaskList";
 import { Card } from "flowbite-react";
 import Imag1 from "./assets/imag1.jpeg"; // Import Image component for the Card
-
+import H1 from "./assets/H1.jpg";
+import H2 from "./assets/H1.jpeg";
+import H4 from "./assets/H4.jpeg";
+import VendorPage from "./components/VendorPage";
 
 
  // Import Image component for the Card
@@ -84,14 +87,14 @@ function App() {
     className="rounded-t-lg"
     width={500}
     height={500}
-    src={Imag1}
+    src={H2}
     alt="image 1"
   />
   <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white p-4">
-    Noteworthy technology acquisitions 2021
+   Samarth
   </h5>
   <p className="font-normal text-gray-700 dark:text-gray-400 p-4">
-    Here are the biggest enterprise technology acquisitions of 2021 so far, in reverse chronological order.
+  The website made it easy for our team to collaborate, assign tasks, and track expenses efficiently. 
   </p>
 </Card>
 
@@ -101,14 +104,14 @@ function App() {
     className="rounded-t-lg"
     width={500}
     height={500}
-    src={Imag1}
+    src={H1}
     alt="image 2"
   />
   <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white p-4">
-    Emerging trends in AI
+    Lincy
   </h5>
   <p className="font-normal text-gray-700 dark:text-gray-400 p-4">
-    Discover the latest advancements in artificial intelligence and how they are transforming industries.
+  The website allowed our team to work together, divide tasks, and keep track of costs without any hassle.
   </p>
 </Card>
 
@@ -118,14 +121,14 @@ function App() {
     className="rounded-t-lg"
     width={500}
     height={500}
-    src={Imag1}
+    src={H4}
     alt="image 3"
   />
   <h5 className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white p-4">
-    Cybersecurity challenges 2021
+    Ariana
   </h5>
   <p className="font-normal text-gray-700 dark:text-gray-400 p-4">
-    Learn about the biggest cybersecurity threats and how organizations are addressing them in 2021.
+  The website streamlined our team's ability to work together, delegate tasks, and manage expenses with ease.
   </p>
 </Card>
 
@@ -154,6 +157,7 @@ function App() {
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
             <Route path="/update/:id" element={<EditEvent />} />
             <Route path="/tasks/:id" element={<TaskList />} />
+            <Route path="/VendorPage" element={<VendorPage />} />
           
           </Route>
           <Route path="/signup" element={<Signup />} />
