@@ -154,7 +154,8 @@ function App() {
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
             <Route path="/update/:id" element={<EditEvent />} />
             <Route path="/tasks/:id" element={<TaskList />} />
-          
+            <Route path="/media-hub" element={<MediaHub />}/>
+            <Route path="/upload-media/:id" element={<UploadMedia />}/>
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
