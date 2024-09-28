@@ -81,22 +81,13 @@ const Nav = () => {
                                 My Events
                             </Navbar.Link>
                         </li>
-                        <li>
-                            <Navbar.Link href="/list">
-                                List of Events
-                            </Navbar.Link>
-                        </li>
+                        
                         <li>
                             <Navbar.Link href="/media-hub">
                                 Media Hub
                             </Navbar.Link>
                         </li>
-                        <li>
-                            <Navbar.Link href="/chat">
-                                Chat
-                            </Navbar.Link>
-                        </li>
-
+                        
                     </ul>
                 ) : (
                     <ul className="nav-ul flex space-x-4">

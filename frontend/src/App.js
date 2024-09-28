@@ -21,6 +21,7 @@ import EditEvent from "./components/EditEvent";
 import TaskList from "./components/TaskList";
 import { Card } from "flowbite-react";
 import Imag1 from "./assets/imag1.jpeg"; // Import Image component for the Card
+import TaskCalendar from "./components/TaskCalender";
 
 
 
@@ -33,6 +34,7 @@ function App() {
         <Nav />
 
         <Routes>
+          
           <Route element={<PrivateComponent />}>
             {/* HomePage After Login */}
             <Route
@@ -154,7 +156,7 @@ function App() {
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
             <Route path="/update/:id" element={<EditEvent />} />
             <Route path="/tasks/:id" element={<TaskList />} />
-          
+            
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
