@@ -15,6 +15,11 @@ import './index.css';
 import BudgetTracking from './components/BudgetTracking';
 import About from './components/About';
 import Review from './components/Review';
+import { Footer } from 'flowbite-react';
+import EditEvent from './components/EditEvent';
+import TaskList from './components/TaskList';
+import bgimage from './assets/bgimage.jpeg';
+import TaskCalendar from './components/TaskCalender';
 
 function App() {
   return (
@@ -70,6 +75,7 @@ function App() {
             <Route path="/tasks/:id" element={<TaskList />} />
             <Route path="/upload-media/:eventId" element={<UploadMedia />} />
             <Route path="/media-hub" element={<MediaHub />} />
+            <Route path="/task-calendar/:id" element={<TaskCalendar />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

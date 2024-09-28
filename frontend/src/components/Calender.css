@@ -1,0 +1,56 @@
+/* Calendar container */
+.calendar-container {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* FullCalendar event style */
+  .fc-event {
+    background-color: #3788d8; /* Default event background */
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  /* FullCalendar deadline event style */
+  .fc-event-deadline {
+    background-color: #ff6347; /* Special color for deadlines */
+    border: none;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  /* Custom FullCalendar button styles */
+  .fc-button {
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+  }
+  
+  .fc-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* FullCalendar header title */
+  .fc-toolbar-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  /* General FullCalendar styling */
+  .fc {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /* FullCalendar cell hover effect */
+  .fc-day:hover {
+    background-color: #f0f8ff;
+  }

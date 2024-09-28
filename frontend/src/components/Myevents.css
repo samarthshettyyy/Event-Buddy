@@ -2,7 +2,7 @@
 .background-container {
     position: relative;
     height: 100vh;
-    overflow: hidden; 
+    overflow: scroll; 
     align-items: center;
    /* Ensure the blur doesn't affect layout */
   }
@@ -44,5 +44,6 @@
     color: white;
     cursor: pointer;
     border-radius: 5px;
+    margin-left: 5px;
   }
   

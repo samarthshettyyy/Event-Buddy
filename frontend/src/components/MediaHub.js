@@ -14,6 +14,7 @@ const MediaHub = () => {
           throw new Error('Failed to fetch media events');
         }
         const data = await response.json();
+        console.warn(data);
         setMediaEvents(data);
       } catch (err) {
         setError(err.message);
@@ -38,14 +39,14 @@ const MediaHub = () => {
 
 const MediaCard = ({ event }) => {
   const coverImage = event.mediaContent.length > 0 ? event.mediaContent[0].fileUrl : '';
-
+    const imgPath = `http://localhost:5000/${coverImage}`; 
+    console.warn(imgPath);
   return (
     <div className="media-card">
-      <img src={coverImage} alt={event.name} className="cover-image" />
+      <img src={imgPath} alt={event.name} className="cover-image" />
       <div className="event-info">
         <h2>{event.name}</h2>
-        <p>Date: {new Date(event.date).toLocaleDateString()}</p>
-        <p>Location: {event.location}</p>
+        <p>Name: {event.name}</p>
       </div>
     </div>
   );
