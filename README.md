@@ -8,7 +8,7 @@
   <li>Task Management</li>
   <li>Calendar to track tasks and categorize as assigned, in progress or pending</li>
   <li>Upload images of your events for the public media hub</li>
-  <li>Chatbot for more details about website</li>
+  <li>Chatbot with Gemini integration for more details about website</li>
 </ul>
 <br>
 
