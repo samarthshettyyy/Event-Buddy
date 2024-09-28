@@ -1,48 +1,88 @@
-/* Blurred background */
 .background-container {
     position: relative;
-    height: 100vh;
-    overflow: hidden; 
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
     align-items: center;
-   /* Ensure the blur doesn't affect layout */
+    padding: 20px;
   }
   
   .background-blur {
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('../assets/bgimage.jpeg'); /* Path to background image */
-    background-size: cover;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/bgimage.jpeg'); /* Add your image URL here */
+    background-size: cover; /* Cover entire background */
     background-position: center;
-    filter: blur(8px); /* Blur the background */
-    z-index: -1;
+    background-repeat: no-repeat;
+    background-color: rgba(255, 255, 255, 0.2); /* Fallback color with some opacity */
+    backdrop-filter: blur(10px); /* Apply blur effect */
+    z-index: -1; /* Ensure it is behind the content */
   }
   
-  /* Event content */
   .myevents-content {
-    position: relative; /* Ensure it stays on top of blurred background */
-    z-index: 1;
-     /* Maintain your original card color */
-    padding: 20px;
-    
-    border-radius: 10px;
+    position: relative; /* Make sure this is above the blurred background */
+    width: 100%; /* Full width */
     max-width: 1200px;
-    margin: auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Add transparency for glassmorphism */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
   
   .myevent {
-    list-style-type: none;
-    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* Transparent card background */
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  .myevent h3 {
+    margin: 0 0 10px;
+  }
+  
+  .myevent p {
+    margin: 5px 0;
+  }
+  
+  /* Flexbox for buttons */
+  .myevent .button-container {
+    display: flex;
+    gap: 10px; /* Space between buttons */
+    flex-wrap: wrap; /* Allows buttons to wrap if screen is small */
+    margin-top: 10px;
   }
   
   .btn {
-    background-color: #00a63a;
-    border: none;
-    padding: 10px 20px;
+    padding: 10px;
+    background-color: #4CAF50; /* Button color */
     color: white;
-    cursor: pointer;
+    border: none;
     border-radius: 5px;
+    cursor: pointer;
+    flex: 1; /* Distribute space equally */
+    text-align: center;
+  }
+  
+  .btn:hover {
+    background-color: #45a049; /* Darken on hover */
+  }
+  
+  @media screen and (max-width: 768px) {
+    .myevent {
+      padding: 15px;
+    }
+  
+    .btn {
+      width: 100%; /* Full width buttons on smaller screens */
+      margin: 5px 0;
+    }
   }
   

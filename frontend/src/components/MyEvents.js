@@ -77,33 +77,29 @@ function MyEvents() {
           <ul>
             {events.map((item) => (
               <li key={item._id} className="myevent">
-                <h3>{item.name}</h3>
-                <p>Type: {item.type}</p>
-                <p>Date: {new Date(item.date).toLocaleDateString()}</p>
-                <p>Time: {item.time}</p>
-                <p>Location: {item.location}</p>
-                <p>Description: {item.description}</p>
+              <h3>{item.name}</h3>
+              <p>Type: {item.type}</p>
+              <p>Date: {new Date(item.date).toLocaleDateString()}</p>
+              <p>Time: {item.time}</p>
+              <p>Location: {item.location}</p>
+              <p>Description: {item.description}</p>
+              
+              <div className="button-container">
                 <Link to={"/budget-tracking/" + item._id}>
-                  <button className="btn">
-                    $
-                  </button>
+                  <button className="btn">$</button>
                 </Link>
                 <Link to={"/update/" + item._id}>
-                  <button className="btn">
-                    Edit
-                  </button>
+                  <button className="btn">Edit</button>
                 </Link>
                 <Link to={"/tasks/" + item._id}>
-                  <button className="btn">
-                    Task
-                  </button>
+                  <button className="btn">Task</button>
                 </Link>
                 <Link to={"/upload-media/" + item._id}>
-                  <button className="btn">
-                    Media
-                  </button>
+                  <button className="btn">Media</button>
                 </Link>
-              </li>
+              </div>
+            </li>
+            
             ))}
           </ul>
         )}

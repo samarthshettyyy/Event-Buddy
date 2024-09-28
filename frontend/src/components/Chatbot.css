@@ -1,7 +1,7 @@
 .chat-container {
     position: absolute;
     justify-content: center;
-    transform: translateY(1350px); /* Change to absolute positioning */
+    transform: translateY(1100px); /* Change to absolute positioning */
     top: 20px; /* Add top margin for spacing */
     left: 40px; /* Add left margin for spacing */
     z-index: 1000; /* Ensure it appears above other elements */
@@ -153,3 +153,7 @@
     width: 24px;
     height: 24px;
   }
+.flow h1{
+
+    margin-left: -70%;
+}

@@ -95,7 +95,7 @@ const Chatbot=()=> {
         <div className="chat-header">
           <div className="header-left">
             <Calendar className="header-icon" />
-            <h2 className="header-title">Event Buddy Chat</h2>
+            <h2 className="header-title">Chatbot</h2>
           </div>
           <button
             onClick={() => setShowQuestions(!showQuestions)}
