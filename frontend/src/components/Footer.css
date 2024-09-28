@@ -5,73 +5,80 @@
     background-color: #f8f9fa; /* Light background color */
     padding: 20px;
     border-top: 1px solid #eaeaea; /* Divider style */
-  }
+}
   
-  .footer-content {
+.footer-content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-  }
+}
   
-  .footer-brand {
+.footer-brand {
     flex: 1;
     display: flex;
     align-items: center;
-  }
+}
   
-  .footer-logo {
+.footer-logo {
     display: flex;
     align-items: center;
     text-decoration: none;
     color: #333; /* Text color */
-  }
+}
   
-  .footer-logo img {
+.footer-logo img {
     width: 40px; /* Logo size */
-    margin-right: 10px;
-  }
+    margin-right: -10px;
+}
   
-  .footer-links {
+.footer-links {
     display: flex;
     justify-content: space-around;
     flex: 2; /* Flex property for adjusting space */
     margin: 20px 0; /* Margin for spacing */
-  }
+}
   
-  .footer-links h4 {
+.footer-links h4 {
     margin-bottom: 10px;
-  }
+}
   
-  .footer-links ul {
+.footer-links ul {
     list-style-type: none;
     padding: 0;
-  }
+}
   
-  .footer-links li {
+.footer-links li {
     margin: 5px 0;
-  }
+}
   
-  .footer-links a {
+.footer-links a {
     text-decoration: none;
     color: #007bff; /* Link color */
-  }
+}
   
-  .footer-bottom {
+.footer-bottom {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-  }
+}
   
-  .footer-divider {
+.footer-divider {
     margin: 10px 0;
     border-top: 1px solid #eaeaea; /* Divider style */
-  }
-  
-  .social-icons a {
+}
+
+/* Social Icons Styles */
+/* In your CSS file */
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.social-icons a {
     margin: 0 10px;
-    color: #333; /* Icon color */
+    color: #333; /* Ensure the color is visible against the background */
     text-decoration: none;
-    font-size: 20px; /* Icon size */
-  }
-  
+    font-size: 20px;
+}
