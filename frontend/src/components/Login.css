@@ -4,19 +4,36 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    position: relative; /* Needed for the background blur */
+    overflow: hidden; /* To prevent any overflow of the blurred background */
+}
+
+/* Blurred background */
+.login-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url('../assets/bgimage.jpeg'); /* Replace with your background image URL */
     background-size: cover;
     background-position: center;
+    filter: blur(8px); /* Apply blur to the background */
+    z-index: -1; /* Ensure the background is behind the login card */
 }
 
+/* Login card styling */
 .login-card {
-    background-color: rgba(255, 255, 255, 0.8); /* Add transparency */
+    background-color: rgba(255, 255, 255, 0.747); /* Add slight transparency */
     padding: 40px;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
     width: 500px; /* Increase width */
     height: 400px; /* Increase height */
+    position: relative;
+    z-index: 1; /* Ensure the card is above the background */
 }
 
 h1 {
@@ -45,5 +62,5 @@ h1 {
 }
 
 .login-btn:hover {
-    background-color: #45a049;
+    background-color: #45a049;
 }
