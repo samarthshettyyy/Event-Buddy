@@ -10,3 +10,13 @@
   <li>Upload images of your events for the public media hub</li>
   <li>Chatbot for more details about website</li>
 </ul>
+<br>
+<h2>Budget Tracker</h2>
+![image](https://github.com/user-attachments/assets/e6fbb923-38a0-4d33-84f3-397e981166ec)
+<br>
+<h2>Task Manager</h2>
+![image](https://github.com/user-attachments/assets/ddada27b-3274-4fcd-8fa4-cdcc284ea595)
+<br>
+![image](https://github.com/user-attachments/assets/6779d5bd-dd20-4a7b-96f9-e9c33d1303c8)
+<br>
+![image](https://github.com/user-attachments/assets/ef3a46e4-8314-47aa-b784-064d7cc02960)
