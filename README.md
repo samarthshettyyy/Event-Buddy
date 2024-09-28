@@ -11,7 +11,7 @@
   <li>Chatbot for more details about website</li>
 </ul>
 <br>
-#output
+# output
 <h2>Budget Tracker</h2>
 ![image](https://github.com/user-attachments/assets/e6fbb923-38a0-4d33-84f3-397e981166ec)
 <br>
