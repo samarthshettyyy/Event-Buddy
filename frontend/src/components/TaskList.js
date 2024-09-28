@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { PlusIcon, TrashIcon } from 'lucide-react';
+import { Calendar, PlusIcon, TrashIcon } from 'lucide-react';
 import { useParams } from 'react-router-dom';
+import TaskCalendar from './TaskCalender';
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]); // Ensure tasks is an array
@@ -239,6 +240,7 @@ const TaskList = () => {
           </ul>
         )}
       </div>
+      <TaskCalendar />
     </div>
   );
 };

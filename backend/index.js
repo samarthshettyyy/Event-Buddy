@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 require('./db/config');
-const User = require('./db/User'); 
+const User = require('./db/User');
 const Event = require('./db/Event');
 const Task = require('./db/Task'); // Import the Task model
 const Media = require('./db/Media');
@@ -32,15 +32,15 @@ app.post("/signup", async (req, res) => {
 
 // Login user
 app.post("/login", async (req, res) => {
-    if(req.body.password && req.body.email) {
+    if (req.body.password && req.body.email) {
         let user = await User.findOne(req.body);
-        if(user) {
+        if (user) {
             res.send(user);
         } else {
-            res.send({ result: 'No User Found'});
+            res.send({ result: 'No User Found' });
         }
     } else {
-        res.send({ result: 'No User Found'});
+        res.send({ result: 'No User Found' });
     }
 });
 
@@ -142,41 +142,40 @@ app.get("/search-email/:key", async (req, res) => {
 
 app.post('/upload-media', upload.array('mediaContent', 10), async (req, res) => {
     const { eventId } = req.body;
-  
+
     // Validate that mediaContent exists and files were uploaded
     if (!req.files || req.files.length === 0) {
-      return res.status(400).json({ error: 'No files uploaded' });
+        return res.status(400).json({ error: 'No files uploaded' });
     }
-  
-    const mediaContent = req.files.map(file => ({
-      fileType: file.mimetype, // Store the file type (e.g., 'image/png', 'video/mp4')
-      fileUrl: `uploads/${file.filename}`, // Construct the correct path to the file
-    }));
-  
-    const media = new Media({
-      eventId,
-      mediaContent // Include the constructed array of media content
-    });
-  
-    try {
-      await media.save();
-      res.status(201).json(media);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to upload media' });
-    }
-  });
-  
 
-  app.get('/media-events', async (req, res) => {
+    const mediaContent = req.files.map(file => ({
+        fileType: file.mimetype, // Store the file type (e.g., 'image/png', 'video/mp4')
+        fileUrl: `uploads/${file.filename}`, // Construct the correct path to the file
+    }));
+
+    const media = new Media({
+        eventId,
+        mediaContent // Include the constructed array of media content
+    });
+
     try {
-      const mediaEvents = await Media.find().populate('eventId', 'name date location');
-      res.json(mediaEvents);
+        await media.save();
+        res.status(201).json(media);
     } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Failed to fetch media events' });
+        console.error(error);
+        res.status(500).json({ error: 'Failed to upload media' });
     }
-  });
+});
+
+
+app.get("/media-events", async (req, res) => {
+    let media = await Media.find();
+    if(media.length > 0) {
+        res.send(media);
+    } else {
+        res.send({result: "No products found"});
+    }
+})
 
 console.log("Working");
 app.listen(5000);
