@@ -1,0 +1,143 @@
+/* Centering the upload card in the middle of the screen */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .upload-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+  }
+  
+  .upload-card h1 {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .preview-container {
+    margin-top: 1rem;
+  }
+  
+  .preview-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  
+  .preview-item {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .preview-image,
+  .preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .upload-button {
+    margin-top: 1.5rem;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .upload-button:hover {
+    background-color: #218838;
+  }
+  
+  input[type="file"] {
+    margin-top: 1rem;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+/* Centering the upload card in the middle of the screen */
+.upload-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f8f9fa;
+  }
+  
+  .upload-card {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+  }
+  
+  .upload-card h1 {
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  .preview-container {
+    margin-top: 1rem;
+  }
+  
+  .preview-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
+  }
+  
+  .preview-item {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .preview-image,
+  .preview-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .upload-button {
+    margin-top: 1.5rem;
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .upload-button:hover {
+    background-color: #218838;
+  }
+  
+  input[type="file"] {
+    margin-top: 1rem;
+    padding: 10px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    

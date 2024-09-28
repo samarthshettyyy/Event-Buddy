@@ -8,8 +8,8 @@ import FlowCarousel from './components/FlowCarousel';
 import CreateEvent from './components/CreateEvent';
 import MyEvents from './components/MyEvents';
 import Chatbot from './components/Chatbot'; // Import the chatbot
-import bgimage from './assets/bgimage.jpeg';
-import Footer from './components/Footer';
+import UploadMedia from './components/UploadMedia';
+import MediaHub from './components/MediaHub';
 import 'flowbite';
 import './index.css';
 import BudgetTracking from './components/BudgetTracking';
@@ -66,6 +66,10 @@ function App() {
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
+            <Route path="/update/:id" element={<EditEvent />} />
+            <Route path="/tasks/:id" element={<TaskList />} />
+            <Route path="/upload-media/:eventId" element={<UploadMedia />} />
+            <Route path="/media-hub" element={<MediaHub />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

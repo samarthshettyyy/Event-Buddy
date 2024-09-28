@@ -1,0 +1,37 @@
+.media-card {
+    display: flex;
+    border: 1px solid #ccc;
+    margin: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 60%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.media-card-image {
+    width: 30%;
+}
+
+.media-cover-img {
+    width: 100%;
+    height: auto;
+}
+
+.media-card-info {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.media-card-info h3 {
+    margin: 0 0 10px;
+}
+
+.media-cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.media-hub-page {
+    padding: 20px;
+}

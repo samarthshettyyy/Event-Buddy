@@ -1,0 +1,34 @@
+.media-hub {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .media-event-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .media-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    width: 250px; /* Adjust the width as necessary */
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+  
+  .media-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .cover-image {
+    width: 100%;
+    height: 150px; /* Adjust height as necessary */
+    object-fit: cover;
+  }
+  
+  .event-info {
+    padding: 10px;
+  }
+  
