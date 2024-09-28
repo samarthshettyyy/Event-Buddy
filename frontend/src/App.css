@@ -163,24 +163,46 @@ h1 {
 }
 /* Custom CSS for the navbar layout */
 
-.Pflow {
-  display: flex;               /* Enable flexbox layout */
-  justify-content: space-between; /* Align child divs to the far left and right */
-  align-items: center;          /* Vertically center the content */
-  width: 100%;                  /* Take full width of the page */
-  height: 100vh;                /* Take full height of the viewport */
+
+.bg{
+  background-size: cover;
+  background-position: center;
+  
+
+    /* Display flex to center the button */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    opacity: 0.5;
+    
+   
+    
+   
+    
+}
+/* Style for the chat icon */
+/* Reduced size for the chat icon */
+
+
+.chat{
+  display: flex;
+  justify-content: flex-start;
+  left: 0;
+}
+.layout-container {
+  display: flex; /* Use flexbox to create a horizontal layout */
+  margin: 20px; /* Margin around the entire layout */
 }
 
-.Flow {
-  height:90%;
-  width: 45%; 
-  padding:30px;                  /* Adjust the width of the child divs (45% each) */
+.left-column {
+  flex: 1; /* This column takes up available space */
+  margin-right: 20px; /* Space between the left and right columns */
 }
 
-.Flow1 {
-  width: 45%;                   /* Adjust the width of the child divs (45% each) */
+.right-column {
+  flex: 1; /* This column takes up available space */
 }
 
-.Text {
-  text-align: center;            /* Right-align the text inside the Chatbot container */
-}
+/* layoutStyles.css */
+

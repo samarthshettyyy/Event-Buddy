@@ -8,37 +8,56 @@ import FlowCarousel from './components/FlowCarousel';
 import CreateEvent from './components/CreateEvent';
 import MyEvents from './components/MyEvents';
 import Chatbot from './components/Chatbot'; // Import the chatbot
-
+import bgimage from './assets/bgimage.jpeg';
+import Footer from './components/Footer';
 import 'flowbite';
 import './index.css';
 import BudgetTracking from './components/BudgetTracking';
-import EditEvent from './components/EditEvent';
-import TaskList from './components/TaskList';
+import About from './components/About';
+import Review from './components/Review';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Nav />
+        
         <Routes>
           <Route element={<PrivateComponent />}>
-            {/* HomePage After Login with FlowCarousel and Chatbot */}
+            {/* HomePage After Login */}
             <Route
               path="/"
               element={
-                <div>
-                  <h1 className="text-center text-2xl my-4"></h1>
-                  {/* Flexbox container for aligning carousel and chatbot */}
-                  <div className="flex items-center justify-between">
-                    {/* Carousel container */}
-                    <div className="w-1/2 h-85 overflow-hidden">
-                      <FlowCarousel />
-                    </div>
-                    {/* Chatbot container */}
-                    <div className="container mx-auto p-4 ">
-                      <h1 className="text-2xl font-bold mb-4">Event Planning Assistant</h1>
-                      <Chatbot />
-                    </div>
+                <div
+                  className="Pflow"
+                  style={{
+                    backgroundImage: `url(${bgimage})`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    height: '100vh',
+                    
+                    position: 'relative', // Added position relative for absolute elements
+                  }}
+                >
+                  <div className="Flow">
+                    <h1 className="reviews">Reviews</h1>
+                    <Review/>
+                  </div>
+                  <div className="Flow" style={{ paddingTop: '900px' }}> {/* Adjust padding to create space */}
+                    <FlowCarousel />
+                  </div>
+
+                  <div className="Flow">
+                    <h1 className="Text">Event Planning Assistant</h1>
+                    <Chatbot />
+                  </div>
+
+                  <div className="Flow">
+                    <About />
+                  </div>
+
+                  <div className="foot">
+                    <Footer />
                   </div>
                 </div>
               }
@@ -47,8 +66,6 @@ function App() {
             <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/my-events/:id" element={<MyEvents />} />
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
-            <Route path="/update/:id" element={<EditEvent />} />
-            <Route path="/task/:id" element={<TaskList />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />

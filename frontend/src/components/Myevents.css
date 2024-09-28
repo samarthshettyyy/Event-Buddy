@@ -1,0 +1,48 @@
+/* Blurred background */
+.background-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden; 
+    align-items: center;
+   /* Ensure the blur doesn't affect layout */
+  }
+  
+  .background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../assets/bgimage.jpeg'); /* Path to background image */
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px); /* Blur the background */
+    z-index: -1;
+  }
+  
+  /* Event content */
+  .myevents-content {
+    position: relative; /* Ensure it stays on top of blurred background */
+    z-index: 1;
+     /* Maintain your original card color */
+    padding: 20px;
+    
+    border-radius: 10px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .myevent {
+    list-style-type: none;
+    margin-bottom: 20px;
+  }
+  
+  .btn {
+    background-color: #00a63a;
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  

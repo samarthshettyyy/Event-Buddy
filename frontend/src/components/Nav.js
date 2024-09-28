@@ -66,7 +66,7 @@ const Nav = () => {
                             </Navbar.Link>
                         </li>
                         <li>
-                            <Navbar.Link href="/home">
+                            <Navbar.Link href="/">
                                 Home
                             </Navbar.Link>
                         </li>

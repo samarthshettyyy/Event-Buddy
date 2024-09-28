@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-image: url('https://your-image-url.com/background.jpg'); /* Replace with your background image URL */
+    background-image: url('../assets/bgimage.jpeg'); /* Replace with your background image URL */
     background-size: cover;
     background-position: center;
 }

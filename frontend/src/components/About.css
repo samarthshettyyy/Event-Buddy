@@ -1,0 +1,56 @@
+/* styles.css */
+
+.container {
+    display: flex;
+    width: 300%;
+  }
+  
+  .left-column {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+     /* Light background for left column */
+  }
+  
+  .right-column {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+  }
+  
+  .about-container {
+    width: 200%;
+    max-width: 700px;
+     /* Set a max width for the About component */
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .about-header {
+    background-color: #e6ef6a; /* Purple header */
+    padding: 16px;
+    color: white;
+    text-align: center;
+    font-size: 1.25rem; /* Adjust font size as needed */
+    font-weight: bold;
+  }
+  
+  .about-content {
+    padding: 24px;
+  }
+  
+  .about-content p {
+    margin-bottom: 16px;
+    color: #495057; /* Dark gray text */
+  }
+  
+  .about-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  .about-content li {
+    margin-bottom: 8px; /* Space between list items */
+    color: #343a40; /* Slightly darker text */
+  }
+  
