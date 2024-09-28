@@ -3,13 +3,15 @@ import './MediaUpload.css'; // Add your CSS for styling
 import { useParams } from 'react-router-dom';
 
 const MediaUpload = () => {
-    const { eventId } = useParams(); // Retrieve eventId from route parameters
+    const params = useParams(); // Retrieve eventId from route parameters
     const [mediaFiles, setMediaFiles] = useState([]);
     const [previewFiles, setPreviewFiles] = useState([]);
     const [message, setMessage] = useState(null);
     const [error, setError] = useState(null);
 
-    console.warn("Event ID:", eventId); // Debugging line
+    console.warn(params);
+    console.warn("Event ID:", params.id); // Debugging line
+    const eventId = params.id;
 
     // Handle file selection and preview
     const handleFilesChange = (e) => {
@@ -30,9 +32,9 @@ const MediaUpload = () => {
 
         const formData = new FormData();
         formData.append('eventId', eventId); // Use eventId from useParams
-        formData.append('date', result.date);
-        formData.append('name', result.name);
-        formData.append('location', result.location);
+        formData.append('date', result.date.toString());
+        formData.append('name', result.name.toString());
+        formData.append('location', result.location.toString());
 
         // Append all selected media files to formData
         for (let i = 0; i < mediaFiles.length; i++) {

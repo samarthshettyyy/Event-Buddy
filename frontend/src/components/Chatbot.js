@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Calendar, Send, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
-import './Chatbot.css'
+import './Chatbot.css';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const predefinedQuestions = [
   {
@@ -30,7 +31,7 @@ const predefinedQuestions = [
   }
 ];
 
-const Chatbot=()=> {
+const Chatbot = ({ eventData }) => {
   const [messages, setMessages] = useState([
     {
       id: 'welcome',
@@ -61,16 +62,80 @@ const Chatbot=()=> {
     setInput('');
     setIsLoading(true);
 
-    // Simulate AI response
-    setTimeout(() => {
+    handleGenerateResponse(input);
+  };
+
+  const handleGenerateResponse = async (userInput) => {
+    // Check if the user's input matches any predefined question
+    const matchedQuestion = predefinedQuestions.find(q =>
+      q.question.toLowerCase() === userInput.toLowerCase()
+    );
+
+    if (matchedQuestion) {
+      // If a match is found, respond with the predefined answer
       const aiMessage = {
-        id: (Date.now() + 1).toString(),
+        id: Date.now().toString(),
         role: 'assistant',
-        content: "I'm processing your request. For quicker assistance, you can also choose from the predefined questions below."
+        content: matchedQuestion.answer
       };
       setMessages(prevMessages => [...prevMessages, aiMessage]);
       setIsLoading(false);
-    }, 1000);
+      return;
+    }
+
+    // Simulate AI response while processing
+    const processingMessage = {
+      id: Date.now().toString(),
+      role: 'assistant',
+      content: "I'm processing your request..."
+    };
+    setMessages(prevMessages => [...prevMessages, processingMessage]);
+
+    try {
+      const genAI = new GoogleGenerativeAI("YOUR_API_KEY"); // Replace with your actual API key
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+      const chatSession = model.startChat({
+        generationConfig: {
+          temperature: 1,
+          topP: 0.95,
+          topK: 64,
+          maxOutputTokens: 8192,
+          responseMimeType: "text/plain",
+        },
+      });
+
+      const result = await chatSession.sendMessage(userInput);
+
+      const responseText = await result.response.text();
+      const formatted = formatGeminiResponse(responseText);
+
+      const aiMessage = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: formatted
+      };
+
+      setMessages(prevMessages => [...prevMessages, aiMessage]);
+    } catch (error) {
+      console.error("Error generating response:", error);
+      const errorMessage = {
+        id: Date.now().toString(),
+        role: 'assistant',
+        content: "Sorry, I couldn't process your request. Please try again."
+      };
+      setMessages(prevMessages => [...prevMessages, errorMessage]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const formatGeminiResponse = (response) => {
+    return response
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
+      .replace(/- (.*?)$/gm, '<li>$1</li>') // List items
+      .replace(/\n\n/g, '</p><p>') // Paragraphs
+      .replace(/\n/g, '<br>'); // Line breaks
   };
 
   const handlePredefinedQuestion = (question) => {
@@ -81,7 +146,7 @@ const Chatbot=()=> {
     };
 
     const aiMessage = {
-      id: (Date.now() + 1).toString(),
+      id: Date.now().toString(),
       role: 'assistant',
       content: question.answer
     };
@@ -160,4 +225,5 @@ const Chatbot=()=> {
     </div>
   );
 }
-export default Chatbot
+
+export default Chatbot;

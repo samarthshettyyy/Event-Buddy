@@ -23,6 +23,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+app.use('/uploads', express.static('uploads'));
+
+
 // Sign up a new user
 app.post("/signup", async (req, res) => {
     let user = new User(req.body);
