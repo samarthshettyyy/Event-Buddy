@@ -87,6 +87,11 @@ const Nav = () => {
                             </Navbar.Link>
                         </li>
                         <li>
+                            <Navbar.Link href="/media-hub">
+                                Media Hub
+                            </Navbar.Link>
+                        </li>
+                        <li>
                             <Navbar.Link href="/chat">
                                 Chat
                             </Navbar.Link>

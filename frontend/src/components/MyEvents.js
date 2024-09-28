@@ -12,6 +12,7 @@ function MyEvents() {
       try {
         const user = JSON.parse(localStorage.getItem('user')); // Get logged-in user info from localStorage
         const userId = user._id; // Assume that user object has _id field
+        const userEmail = user.email;
         console.warn(userId);
 
         if (!userId) {
@@ -19,7 +20,30 @@ function MyEvents() {
           return;
         }
 
-        const response = await fetch(`http://localhost:5000/my-events/${userId}`);
+        //const response = await fetch(`http://localhost:5000/my-events/${userId}`);
+        //const data = await response.json();
+
+        // try {
+        //   const response = await fetch(`http://localhost:5000/my-events/${userId}`, {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json',
+        //     },
+        //     body: JSON.stringify({ email: userEmail }), // Pass the email in the request body
+        //   });
+        //   const data = await response.json();
+        //   console.log(data); // Check if data is coming correctly
+        // } catch (error) {
+        //   console.error('Error fetching events:', error);
+        // }
+
+        const response = await fetch(`http://localhost:5000/my-events/${userId}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email: userEmail }), // Pass the email in the request body
+        });
         const data = await response.json();
 
         if (response.ok) {
@@ -71,6 +95,11 @@ function MyEvents() {
                 <Link to={"/tasks/" + item._id}>
                   <button className="btn">
                     Task
+                  </button>
+                </Link>
+                <Link to={"/upload-media/" + item._id}>
+                  <button className="btn">
+                    Media
                   </button>
                 </Link>
               </li>
