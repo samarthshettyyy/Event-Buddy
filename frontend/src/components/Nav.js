@@ -87,17 +87,7 @@ const Nav = () => {
                                 Media Hub
                             </Navbar.Link>
                         </li>
-<<<<<<< HEAD
-                        <li>
-                            <Navbar.Link href="/VendorPage">
-                                Vendors
-                            </Navbar.Link>
-                        </li>
-                      
-
-=======
                         
->>>>>>> f1d31990c6654231a915dd2a5b6d45f54c0d3c53
                     </ul>
                 ) : (
                     <ul className="nav-ul flex space-x-4">

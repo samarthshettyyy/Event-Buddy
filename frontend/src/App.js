@@ -21,15 +21,11 @@ import EditEvent from "./components/EditEvent";
 import TaskList from "./components/TaskList";
 import { Card } from "flowbite-react";
 import Imag1 from "./assets/imag1.jpeg"; // Import Image component for the Card
-<<<<<<< HEAD
+import TaskCalendar from "./components/TaskCalender";
 import H1 from "./assets/H1.jpg";
 import H2 from "./assets/H1.jpeg";
 import H4 from "./assets/H4.jpeg";
-import VendorPage from "./components/VendorPage";
-=======
-import TaskCalendar from "./components/TaskCalender";
 
->>>>>>> f1d31990c6654231a915dd2a5b6d45f54c0d3c53
 
 
  // Import Image component for the Card
@@ -163,13 +159,8 @@ function App() {
             <Route path="/budget-tracking/:id" element={<BudgetTracking />} />
             <Route path="/update/:id" element={<EditEvent />} />
             <Route path="/tasks/:id" element={<TaskList />} />
-<<<<<<< HEAD
-            <Route path="/VendorPage" element={<VendorPage />} />
-          
-=======
             <Route path="/media-hub" element={<MediaHub />}/>
             <Route path="/upload-media/:id" element={<UploadMedia />}/>
->>>>>>> f1d31990c6654231a915dd2a5b6d45f54c0d3c53
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
